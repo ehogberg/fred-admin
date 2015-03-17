@@ -1,6 +1,7 @@
 (ns fred-admin.core
   (:require [om.core :as om :include-macros true]
             [om-tools.dom :as dom :include-macros true]
+            [fred-admin.routing :as routing]
             [fred-admin.ui :refer [index]]))
 
 (defonce app-state (atom {:nav {:brand "Admin"

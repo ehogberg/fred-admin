@@ -14,6 +14,4 @@
 
 (weasel/connect "ws://localhost:9001" :verbose true :print #{:repl :console})
 
-(routing/init-routing)
-
 (core/main)
