@@ -15,4 +15,3 @@
     (goog.events/listen h EventType/NAVIGATE
                         #(secretary/dispatch! (.-token %)))
     (doto h (.setEnabled true))))
-

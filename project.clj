@@ -5,19 +5,19 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :source-paths ["src/clj"]
-:repl-options {:timeout 200000} ;; Defaults to 30000 (30 seconds)
+  :repl-options {:timeout 200000} ;; Defaults to 30000 (30 seconds)
 
   :test-paths ["spec/clj"]
 
   :dependencies [[leiningen "2.5.1"]
                  [org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2511" :scope "provided"]
+                 [org.clojure/clojurescript "0.0-3123" :scope "provided"]
                  [ring "1.3.2"]
-                 [ring/ring-defaults "0.1.3"]
-                 [compojure "1.3.1"]
+                 [ring/ring-defaults "0.1.4"]
+                 [compojure "1.3.2"]
                  [enlive "1.1.5"]
                  [om "0.8.0-rc1"]
-                 [racehub/om-bootstrap "0.4.1"]
+                 [racehub/om-bootstrap "0.4.2"]
                  [environ "1.0.0"]
                  [secretary "1.2.2"]
                  [http-kit "2.1.19"]
@@ -31,9 +31,11 @@
   :uberjar-name "fred-admin.jar"
 
   :cljsbuild {:builds {:app {:source-paths ["src/cljs"]
-                             :compiler {:output-to     "resources/public/js/app.js"
+                             :compiler {:output-to
+                                        "resources/public/js/app.js"
                                         :output-dir    "resources/public/js/out"
-                                        :source-map    "resources/public/js/out.js.map"
+                                        :source-map
+                                        "resources/public/js/out.js.map"
                                         :preamble      ["react/react.min.js"]
                                         :optimizations :none
                                         :pretty-print  true}}}}
@@ -41,14 +43,15 @@
   :profiles {:dev {:source-paths ["env/dev/clj"]
                    :test-paths ["test/clj"]
 
-                   :dependencies [[figwheel "0.2.1-SNAPSHOT"]
-                                  [figwheel-sidecar "0.2.1-SNAPSHOT"]
-                                  [com.cemerick/piggieback "0.1.3"]
-                                  [weasel "0.4.2"]
+                   :dependencies [[figwheel "0.2.5"]
+                                  [figwheel-sidecar "0.2.5"]
+                                  [com.cemerick/piggieback "0.1.5"]
+                                  [weasel "0.6.0"]
                                   [speclj "3.1.0"]]
 
                    :repl-options {:init-ns fred-admin.server
-                                  :nrepl-middleware [cemerick.piggieback/wrap-cljs-repl]}
+                                  :nrepl-middleware
+                                  [cemerick.piggieback/wrap-cljs-repl]}
 
                    :plugins [[lein-figwheel "0.2.1-SNAPSHOT"]
                              [speclj "3.1.0"]]
@@ -59,15 +62,18 @@
 
                    :env {:is-dev true}
 
-                   :cljsbuild {:test-commands { "spec" ["phantomjs" "bin/speclj" "resources/public/js/app_test.js"] }
+                   :cljsbuild {:test-commands
+                               { "spec" ["phantomjs" "bin/speclj"
+                                         "resources/public/js/app_test.js"] }
                                :builds {:app {:source-paths ["env/dev/cljs"]}
-                                        :test {:source-paths ["src/cljs" "spec/cljs"]
-                                               :compiler {:output-to     "resources/public/js/app_test.js"
-                                                          :output-dir    "resources/public/js/test"
-                                                          :source-map    "resources/public/js/test.js.map"
-                                                          :preamble      ["react/react.min.js"]
-                                                          :optimizations :whitespace
-                                                          :pretty-print  false}}}}}
+                                        :test
+                                        {:source-paths ["src/cljs" "spec/cljs"]
+                                         :compiler {:output-to     "resources/public/js/app_test.js"
+                                                    :output-dir    "resources/public/js/test"
+                                                    :source-map    "resources/public/js/test.js.map"
+                                                    :preamble      ["react/react.min.js"]
+                                                    :optimizations :whitespace
+                                                    :pretty-print  false}}}}}
 
              :uberjar {:source-paths ["env/prod/clj"]
                        :hooks [leiningen.cljsbuild]
