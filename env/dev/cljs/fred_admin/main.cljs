@@ -1,5 +1,6 @@
 (ns fred-admin.main
   (:require [fred-admin.core :as core]
+            [fred-admin.routing :as routing]
             [figwheel.client :as figwheel :include-macros true]
             [cljs.core.async :refer [put!]]
             [weasel.repl :as weasel]))
@@ -12,5 +13,7 @@
                      (core/main)))
 
 (weasel/connect "ws://localhost:9001" :verbose true :print #{:repl :console})
+
+(routing/init-routing)
 
 (core/main)

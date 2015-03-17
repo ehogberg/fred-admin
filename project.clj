@@ -19,6 +19,7 @@
                  [om "0.8.0-rc1"]
                  [racehub/om-bootstrap "0.4.1"]
                  [environ "1.0.0"]
+                 [secretary "1.2.2"]
                  [http-kit "2.1.19"]
                  [prismatic/om-tools "0.3.11"]]
 
