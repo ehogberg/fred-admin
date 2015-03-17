@@ -1,8 +1,7 @@
 (ns fred-admin.core
   (:require [om.core :as om :include-macros true]
             [om-tools.dom :as dom :include-macros true]
-            [fred-admin.ui :refer [index]]
-            [secretary.core :as secretary :refer-macros [defroute]]))
+            [fred-admin.ui :refer [index]]))
 
 (defonce app-state (atom {:nav {:brand "Admin"
                                 :menu [{:label "Companies"
@@ -21,14 +20,3 @@
           (om/build index app))))
     app-state
     {:target (. js/document (getElementById "app"))}))
-
-
-
-
-
-
-
-
-
-
-

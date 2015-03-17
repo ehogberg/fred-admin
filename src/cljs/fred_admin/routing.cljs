@@ -8,6 +8,7 @@
 (defroute companies "/companies" []
   (.log js/console "Entered companies..."))
 
+
 (defn init-routing []
   (secretary/set-config! :prefix "#")
   (let [h (goog.History.)]
